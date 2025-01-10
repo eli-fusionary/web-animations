@@ -6,4 +6,11 @@ body {
     width: 200px;
     height: 200px;
     background-color: rebeccapurple;
+    transition: transform 2s .3s ease-in-out, background-color 1s;
+    
+}
+
+.square:hover {
+    transform: rotate(45deg);
+    background-color: yellow;
 }
