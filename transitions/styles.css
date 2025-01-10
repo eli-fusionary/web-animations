@@ -6,8 +6,7 @@ body {
     width: 200px;
     height: 200px;
     background-color: rebeccapurple;
-    transition: transform 2s .3s ease-in-out, background-color 1s;
-    
+    transition: transform 1s ease-in-out, background-color .3s;
 }
 
 .square:hover {
