@@ -10,6 +10,22 @@
             document.addEventListener('click', (event) => {
                 element.style.transform = `translateY(${event.clientY - (element.clientHeight / 2)}px) translateX(${event.clientX - (element.clientWidth / 2)}px)`;
             });
+
+            element.addEventListener('transitionrun', (event) => {
+                // TODO Remove this test code
+                console.log('ELITEST transitionrun', { event });
+                // ^ TODO Remove this test code
+            });
+            element.addEventListener('transitionstart', (event) => {
+                // TODO Remove this test code
+                console.log('ELITEST transitionstart', { event });
+                // ^ TODO Remove this test code
+            });
+            element.addEventListener('transitionend', (event) => {
+                // TODO Remove this test code
+                console.log('ELITEST transitionend', { event });
+                // ^ TODO Remove this test code
+            });
         });
     </script>
     <link rel="stylesheet" href="styles.css">
