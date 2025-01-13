@@ -22,9 +22,11 @@
                 // ^ TODO Remove this test code
             });
             element.addEventListener('transitionend', (event) => {
-                // TODO Remove this test code
-                console.log('ELITEST transitionend', { event });
-                // ^ TODO Remove this test code
+                if (event.propertyName === 'transform') {
+                    
+                const randomColor = Math.floor(Math.random()*16777215).toString(16);
+                element.style.backgroundColor = `#${randomColor}`;
+                }
             });
         });
     </script>
