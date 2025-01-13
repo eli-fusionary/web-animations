@@ -1,26 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Transitions</title>
-    <link rel="stylesheet" href="styles.css">
-
+    <link rel="stylesheet" href="styles.css" />
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const square = document.querySelector('.square');
-            const toggleSquare = document.querySelector('.toggle-square');
-
-            toggleSquare.addEventListener('click', function() {
-                square.classList.toggle('hide');
-            });
-        });
+      document.addEventListener("DOMContentLoaded", () => {
+        const element = document.querySelector(".square");
+      });
     </script>
-</head>
-<body>
-    <div class="square">
-
-    </div>
-    <button class="toggle-square">Toggle Square</button>
-</body>
+  </head>
+  <body>
+    <div class="square"></div>
+  </body>
 </html>

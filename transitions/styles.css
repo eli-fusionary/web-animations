@@ -1,15 +1,14 @@
 body {
-    background-color: #222;
-}
-
-.square {
-    width: 200px;
-    height: 200px;
+    background-color: #222222;
+  }
+  
+  .square {
+    width: 100px;
+    height: 100px;
     background-image: linear-gradient(purple, yellow);
-    transition: display 2s allow-discrete, opacity 2s;
-}
-
-.square.hide {
-    display: none;
-    opacity: 0;
-}
+    transition: all 2s allow-discrete;
+  }
+  .square:hover {
+    background-image: linear-gradient(skyblue, violet);
+    transform: translateX(100px);
+  }
