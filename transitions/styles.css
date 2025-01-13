@@ -5,6 +5,10 @@ body {
 .square {
     width: 200px;
     height: 200px;
-    background-color: rebeccapurple;
-    transition: transform .31s ease-in-out, background-color .3s;
+    background-image: linear-gradient(purple, yellow);
+    transition: all 2s allow-discrete;
+}
+
+.square:hover {
+    background-image: linear-gradient(skyblue, violet);
 }
