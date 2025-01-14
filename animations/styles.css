@@ -8,9 +8,7 @@ body {
     width: 100px;
     height: 100px;
     background-color: gold;
-    animation-name: move;
-    animation-duration: 2s;
-    
+    animation: 2s 0s 2 alternate running move;
 }
 
 @keyframes move {
