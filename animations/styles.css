@@ -10,17 +10,30 @@ body {
     background-color: #ffbe00;
     background-image: url("../logo.svg");
 
-    animation: 2s 2s ease-in-out 1 alternate move;
+    animation: 2s ease-in-out 1  move;
     animation-direction: normal;
-    animation-fill-mode: both;
+    animation-fill-mode: add;
+
+    /* transform: translateX(50px); */
 }
 
 @keyframes move {
     0% {
         transform: translateX(0);
+    }
+    25% {
+         background-color: red;
+    }
+    50% {
+        transform: translateX(100px);
+    }
+    50% {
         background-color: cornflowerblue;
+        animation-composition: replace;
+
     }
     100% {
         transform: translateX(calc(100vw - 140px));
     }
 }
+
