@@ -7,20 +7,16 @@ body {
 .square {
     width: 100px;
     height: 100px;
-    background-color: #ffbe00;
-    background-image: url("../logo.svg");
+    background-color: gold;
+    background-image: linear-gradient(gold, purple);
 
-    animation: 2s ease-in-out 3 alternate  move;
-    animation-direction: normal;
-    animation-fill-mode: add;
+    animation: 10s flip-bg;
+    animation-fill-mode: both;
 }
 
-@keyframes move {
-    0% {
-        transform: translateX(0);
-    }
+@keyframes flip-bg {
     100% {
-        transform: translateX(calc(100vw - 140px));
+        background-image: linear-gradient(greenyellow, maroon)
     }
 }
 
