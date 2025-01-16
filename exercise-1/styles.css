@@ -31,6 +31,8 @@ body {
   .ground {
     height: 50vh;
     position: relative;
+    animation: 6s linear infinite street-move;
+    animation-fill-mode: forwards;
   }
   .ground .street {
     background-image: linear-gradient(#464646, #242424);
@@ -81,7 +83,11 @@ body {
     height: 50vh;
     width: 100%;
     top: 0;
+
+    animation-fill-mode: forwards;
+    animation: 10s linear infinite background-move;
   }
+
   .background img {
     position: absolute;
     height: 50%;
@@ -99,6 +105,8 @@ body {
     height: 90%;
     bottom: 0px;
     left: 0;
+
+    animation: 3.5s linear infinite reverse foreground-move;
   }
 
   @keyframes run {    
@@ -118,5 +126,30 @@ body {
     }
     to {
       transform: translateY(0)
+    }
+  }
+
+
+  @keyframes background-move {
+    from {
+      transform: translateX(120%);
+    }
+    to {
+      transform: translateX(-20%);
+    }
+  }
+
+  @keyframes street-move {
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes foreground-move {
+    from {
+      transform: translateX(-20vw);
+    }
+    to {
+      transform: translateX(100vw);
     }
   }
