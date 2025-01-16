@@ -7,14 +7,39 @@ body {
 .square {
     width: 100px;
     height: 100px;
-    background-color: gold;
-    background-image: linear-gradient(gold, purple);
+    background-color: #ffbe00;
+    background-image: linear-gradient(#ffbe00, purple);
 
-    animation: 10s flip-bg;
+    animation: 5s fade-in;
     animation-fill-mode: both;
 }
 
+@keyframes fade-out {
+    from { 
+        display: block;
+        opacity: 1;
+    }
+    to {
+        display: none;
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    from { 
+        display: none;
+        opacity: 0;
+    }
+    to {
+        display: block;
+        opacity: 1;
+    }
+}
+
 @keyframes flip-bg {
+    50% {
+        background-image: linear-gradient(violet, skyblue)
+    }
     100% {
         background-image: linear-gradient(greenyellow, maroon)
     }
