@@ -7,6 +7,16 @@
     <title>Animations Exercise</title>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        const character = document.querySelector('.character')
+        document.addEventListener("keydown", (event) => {
+          if (event.code === "Space") {
+            character.classList.add('jump')
+
+            setTimeout(() => {
+              character.classList.remove('jump')
+            }, 1500)
+          }
+        });
       });
     </script>
   </head>
@@ -24,7 +34,7 @@
           <div class="lines"></div>
         </div>
       </div>
-      <div class="character"></div>
+      <div class="character run"></div>
       <div class="foreground">
         <img src="assets/s2.png" alt="" />
       </div>

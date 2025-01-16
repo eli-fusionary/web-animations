@@ -60,12 +60,20 @@ body {
     margin: auto;
     background-image: url("./assets/7888220.png");
     background-size: calc(var(--char-width) * 8);
-    background-position: calc(var(--char-width) * 1) 0px;
+
     background-repeat: no-repeat;
     width: var(--char-width);
     aspect-ratio: 0.535;
-    
+
+    animation-composition: add;
+  }
+
+  .character.run {
     animation: run 2s steps(8, start) infinite;
+  }
+
+  .character.jump {
+    animation: 1.5s 1 ease-in-out jump;
   }
   
   .background {
@@ -94,7 +102,21 @@ body {
   }
 
   @keyframes run {    
-    100% {
+    from {
+      background-position: calc(var(--char-width) * 1) 0px;
+
+    }
+    to {
       background-position: calc(var(--char-width) * -7) 0px;
+    }
+  }
+
+
+  @keyframes jump {
+    from {
+      transform: translateY(-100px);
+    }
+    to {
+      transform: translateY(0)
     }
   }
