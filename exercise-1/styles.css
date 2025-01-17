@@ -64,7 +64,8 @@ body {
   left: 0;
   right: 0;
   margin: auto;
-  background-image: url("./assets/7888220.png");
+  background-image: url("./assets/7948134.png");
+  /* background-image: url("./assets/7888220.png"); */
   background-size: calc(var(--char-width) * 8);
   background-position: calc(var(--char-width) * -4) 0px;
   background-repeat: no-repeat;
