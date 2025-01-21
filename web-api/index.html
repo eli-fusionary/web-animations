@@ -7,6 +7,9 @@
     <title>Web Animations API</title>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        console.log({
+          timeline: document.timeline,
+        })
         const square = document.querySelector(".square");
         const pauseButton = document.querySelector(".pauseButton");
         const playButton = document.querySelector(".playButton");
