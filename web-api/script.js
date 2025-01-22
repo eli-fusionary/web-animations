@@ -70,11 +70,24 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         ])
       }
+
+      if (button.classList.contains('logInfo')) {
+        console.log({ currentTime: squareAnimation.currentTime })
+        console.log({ startTime: squareAnimation.startTime })
+        console.log({ playbackRate: squareAnimation.playbackRate })
+        console.log({ playState: squareAnimation.playState })
+        console.log({ keyframes: squareAnimation.effect.getKeyframes() })
+        console.log({ keyframeTiming: squareAnimation.effect.getTiming() })
+        console.log({ keyframeComputedTiming: squareAnimation.effect.getComputedTiming() })
+      }
     })
   })
 
   const playbackRateInput = document.getElementById('playbackRateInput')
   const playbackRateInputValue = document.getElementById('playbackRateInputValue')
+
+  playbackRateInput.value = squareAnimation.playbackRate;
+  playbackRateInputValue.value = squareAnimation.playbackRate;
 
   playbackRateInput.addEventListener('input', (e) => {
     squareAnimation.updatePlaybackRate(e.target.value)
@@ -85,6 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const durationInput = document.getElementById('durationInput')
   const durationInputValue = document.getElementById('durationInputValue')
 
+  durationInput.value = squareAnimation.effect.getComputedTiming().duration
+  durationInputValue.value = squareAnimation.effect.getComputedTiming().duration
+
   durationInput.addEventListener('input', (e) => {
     squareAnimation.effect.updateTiming({
       duration: +e.target.value
@@ -94,6 +110,8 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   const infiniteInput = document.getElementById('infiniteInput')
+
+  infiniteInput.checked = squareAnimation.effect.getComputedTiming().iterations
 
   infiniteInput.addEventListener('change', (e) => {
     squareAnimation.effect.updateTiming({
