@@ -15,21 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
         easing: ['ease-in', 'linear'],
         composite: ['add', 'replace', 'add'],
     },
-    // [
-    //   {
-    //     transform: "translateX(0)",
-    //     easing: 'ease-in'
-    //   },
-    //   {
-    //     backgroundColor: "blue",
-    //     offset: 0.8,
-    //     composite: 'replace'
-    //   },
-    //   {
-    //     transform: `translateX(calc(100vw - 100px)) rotate(360deg)`,
-    //     backgroundColor: "crimson",
-    //   },
-    // ],
     {
       duration: 3000,
       delay: 1000,
@@ -37,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
       fill: "both",
       iterations: Infinity,
       easing: "linear",
-    //   composite: "add",
       timeline: document.timeline
     }
   );
