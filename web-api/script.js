@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
       delay: 1000,
       direction: "alternate",
       fill: "both",
-      iterations: Infinity,
+      iterations: 2,
       easing: "linear",
       composite: "add",
       iterationComposite: "accumulate",
@@ -118,5 +118,12 @@ document.addEventListener("DOMContentLoaded", () => {
       iterations: e.target.checked ? Infinity : 2
     })
   })
+  
 
+  const currentTimeInput = document.getElementById('currentTimeInput')
+  currentTimeInput.value = squareAnimation.currentTime
+
+  currentTimeInput.addEventListener('input', (e) => {
+    squareAnimation.currentTime = e.target.value
+  })
 });
