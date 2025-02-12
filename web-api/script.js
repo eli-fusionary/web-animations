@@ -126,4 +126,14 @@ document.addEventListener("DOMContentLoaded", () => {
   currentTimeInput.addEventListener('input', (e) => {
     squareAnimation.currentTime = e.target.value
   })
+
+  const startTimeInput = document.getElementById('startTimeInput')
+  startTimeInput.value = squareAnimation.startTime
+
+  startTimeInput.addEventListener('input', (e) => {
+    squareAnimation.startTime = e.target.value
+  })
+
+
+  squareAnimation.startTime = startTimeInput
 });
