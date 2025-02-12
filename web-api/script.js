@@ -37,14 +37,30 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener('click', () => {
       if (button.classList.contains('play')) {
         squareAnimation.play()
+
+        console.log('playState before play()', squareAnimation.playState)
+        console.log('pending before play()', squareAnimation.pending)
+
+        squareAnimation.ready.then(() => {
+          console.log('pending after play()', squareAnimation.pending)
+
+        })
       }
 
       if (button.classList.contains('pause')) {
         squareAnimation.pause()
+
+        squareAnimation.ready.then(() => {
+          console.log('playState after pause()', squareAnimation.playState)
+        })
       }
 
       if (button.classList.contains('cancel')) {
         squareAnimation.cancel()
+
+        squareAnimation.ready.then(() => {
+          console.log('playState after cancel()', squareAnimation.playState)
+        })
       }
 
       if (button.classList.contains('reverse')) {
@@ -53,6 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (button.classList.contains('finish')) {
         squareAnimation.finish()
+        console.log('playState after finish()', squareAnimation.playState)
+
       }
       
       if (button.classList.contains('changeAnimation')) {
@@ -135,5 +153,18 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
 
-  squareAnimation.startTime = startTimeInput
+  squareAnimation.pause();
+
+  console.log('playState after pause()', squareAnimation.playState)
+  console.log('pending after pause()', squareAnimation.pending)
+
+  squareAnimation.ready.then(() => {
+    console.log('playState during ready resolve', squareAnimation.playState)
+    console.log('pending during ready resolve', squareAnimation.pending)
+  })
+
+  squareAnimation.play()
+
+  console.log('playState after play()', squareAnimation.playState)
+  console.log('pending after play()', squareAnimation.pending)
 });
