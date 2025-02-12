@@ -4,4 +4,8 @@ This is the repo for the code I write against [this](https://www.udemy.com/cours
 
 Each branch is for a separate section.
 
-At the time of writing this Markdown I was imply using Live Server to render the pages.
+To run: 
+
+```sh
+npx live-server --browser=chrome
+```
