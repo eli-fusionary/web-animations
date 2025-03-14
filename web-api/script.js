@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const element = document.querySelector(".square");
 
   const squareAnimation = element.animate(
@@ -167,4 +167,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log('playState after play()', squareAnimation.playState)
   console.log('pending after play()', squareAnimation.pending)
+
+  // await squareAnimation.finished;
+  // element.remove()
+  // console.log('ELITEST Finished', {  });
+
+  squareAnimation.addEventListener("finish", (e) => {
+    // TODO Remove this test code
+    console.log('ELITEST', { e });
+    // ^ TODO Remove this test code
+  })
+
+  squareAnimation.addEventListener("cancel", (e) => {
+    // TODO Remove this test code
+    console.log('ELITEST', { e });
+    // ^ TODO Remove this test code
+  })
 });
