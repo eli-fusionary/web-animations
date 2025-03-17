@@ -1,5 +1,21 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const element = document.querySelector(".square");
+  const element2 = document.querySelector(".square-3");
+  element2.animate(
+    [
+      {
+        backgroundColor: "red",
+      },
+      {
+        backgroundColor: "yellow",
+      },
+    ],
+    {
+      duration: 2000,
+      direction: "alternate",
+      iterations: Infinity,
+    }
+  );
 
   const squareAnimation = element.animate(
     [
@@ -29,51 +45,49 @@ document.addEventListener("DOMContentLoaded", async () => {
       timeline: document.timeline,
     }
   );
-  squareAnimation.pause()
+  squareAnimation.pause();
 
-  const buttons = document.querySelectorAll('.button');
+  const buttons = document.querySelectorAll(".button");
 
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      if (button.classList.contains('play')) {
-        squareAnimation.play()
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (button.classList.contains("play")) {
+        squareAnimation.play();
 
-        console.log('playState before play()', squareAnimation.playState)
-        console.log('pending before play()', squareAnimation.pending)
-
-        squareAnimation.ready.then(() => {
-          console.log('pending after play()', squareAnimation.pending)
-
-        })
-      }
-
-      if (button.classList.contains('pause')) {
-        squareAnimation.pause()
+        console.log("playState before play()", squareAnimation.playState);
+        console.log("pending before play()", squareAnimation.pending);
 
         squareAnimation.ready.then(() => {
-          console.log('playState after pause()', squareAnimation.playState)
-        })
+          console.log("pending after play()", squareAnimation.pending);
+        });
       }
 
-      if (button.classList.contains('cancel')) {
-        squareAnimation.cancel()
+      if (button.classList.contains("pause")) {
+        squareAnimation.pause();
 
         squareAnimation.ready.then(() => {
-          console.log('playState after cancel()', squareAnimation.playState)
-        })
+          console.log("playState after pause()", squareAnimation.playState);
+        });
       }
 
-      if (button.classList.contains('reverse')) {
-        squareAnimation.reverse()
+      if (button.classList.contains("cancel")) {
+        squareAnimation.cancel();
+
+        squareAnimation.ready.then(() => {
+          console.log("playState after cancel()", squareAnimation.playState);
+        });
       }
 
-      if (button.classList.contains('finish')) {
-        squareAnimation.finish()
-        console.log('playState after finish()', squareAnimation.playState)
-
+      if (button.classList.contains("reverse")) {
+        squareAnimation.reverse();
       }
-      
-      if (button.classList.contains('changeAnimation')) {
+
+      if (button.classList.contains("finish")) {
+        squareAnimation.finish();
+        console.log("playState after finish()", squareAnimation.playState);
+      }
+
+      if (button.classList.contains("changeAnimation")) {
         squareAnimation.effect.setKeyframes([
           {
             transform: "translateY(0)",
@@ -86,87 +100,89 @@ document.addEventListener("DOMContentLoaded", async () => {
             transform: "translateY(calc(100vh - 100px)) rotate(360deg)",
             backgroundColor: "purple",
           },
-        ])
+        ]);
       }
 
-      if (button.classList.contains('logInfo')) {
-        console.log({ currentTime: squareAnimation.currentTime })
-        console.log({ startTime: squareAnimation.startTime })
-        console.log({ playbackRate: squareAnimation.playbackRate })
-        console.log({ playState: squareAnimation.playState })
-        console.log({ keyframes: squareAnimation.effect.getKeyframes() })
-        console.log({ keyframeTiming: squareAnimation.effect.getTiming() })
-        console.log({ keyframeComputedTiming: squareAnimation.effect.getComputedTiming() })
+      if (button.classList.contains("logInfo")) {
+        console.log({ currentTime: squareAnimation.currentTime });
+        console.log({ startTime: squareAnimation.startTime });
+        console.log({ playbackRate: squareAnimation.playbackRate });
+        console.log({ playState: squareAnimation.playState });
+        console.log({ keyframes: squareAnimation.effect.getKeyframes() });
+        console.log({ keyframeTiming: squareAnimation.effect.getTiming() });
+        console.log({
+          keyframeComputedTiming: squareAnimation.effect.getComputedTiming(),
+        });
       }
-    })
-  })
+    });
+  });
 
-  const playbackRateInput = document.getElementById('playbackRateInput')
-  const playbackRateInputValue = document.getElementById('playbackRateInputValue')
+  const playbackRateInput = document.getElementById("playbackRateInput");
+  const playbackRateInputValue = document.getElementById(
+    "playbackRateInputValue"
+  );
 
   playbackRateInput.value = squareAnimation.playbackRate;
   playbackRateInputValue.value = squareAnimation.playbackRate;
 
-  playbackRateInput.addEventListener('input', (e) => {
-    squareAnimation.updatePlaybackRate(e.target.value)
-    playbackRateInputValue.value = e.target.value
-  })
+  playbackRateInput.addEventListener("input", (e) => {
+    squareAnimation.updatePlaybackRate(e.target.value);
+    playbackRateInputValue.value = e.target.value;
+  });
 
+  const durationInput = document.getElementById("durationInput");
+  const durationInputValue = document.getElementById("durationInputValue");
 
-  const durationInput = document.getElementById('durationInput')
-  const durationInputValue = document.getElementById('durationInputValue')
+  durationInput.value = squareAnimation.effect.getComputedTiming().duration;
+  durationInputValue.value =
+    squareAnimation.effect.getComputedTiming().duration;
 
-  durationInput.value = squareAnimation.effect.getComputedTiming().duration
-  durationInputValue.value = squareAnimation.effect.getComputedTiming().duration
-
-  durationInput.addEventListener('input', (e) => {
+  durationInput.addEventListener("input", (e) => {
     squareAnimation.effect.updateTiming({
-      duration: +e.target.value
-    })
+      duration: +e.target.value,
+    });
 
-    durationInputValue.value = e.target.value
-  })
+    durationInputValue.value = e.target.value;
+  });
 
-  const infiniteInput = document.getElementById('infiniteInput')
+  const infiniteInput = document.getElementById("infiniteInput");
 
-  infiniteInput.checked = squareAnimation.effect.getComputedTiming().iterations
+  infiniteInput.checked = squareAnimation.effect.getComputedTiming().iterations;
 
-  infiniteInput.addEventListener('change', (e) => {
+  infiniteInput.addEventListener("change", (e) => {
     squareAnimation.effect.updateTiming({
-      iterations: e.target.checked ? Infinity : 2
-    })
-  })
-  
+      iterations: e.target.checked ? Infinity : 2,
+    });
+  });
 
-  const currentTimeInput = document.getElementById('currentTimeInput')
-  currentTimeInput.value = squareAnimation.currentTime
+  const currentTimeInput = document.getElementById("currentTimeInput");
+  currentTimeInput.value = squareAnimation.currentTime;
 
-  currentTimeInput.addEventListener('input', (e) => {
-    squareAnimation.currentTime = e.target.value
-  })
+  currentTimeInput.addEventListener("input", (e) => {
+    squareAnimation.currentTime = e.target.value;
+  });
 
-  const startTimeInput = document.getElementById('startTimeInput')
-  startTimeInput.value = squareAnimation.startTime
+  const startTimeInput = document.getElementById("startTimeInput");
+  startTimeInput.value = squareAnimation.startTime;
 
-  startTimeInput.addEventListener('input', (e) => {
-    squareAnimation.startTime = e.target.value
-  })
+  startTimeInput.addEventListener("input", (e) => {
+    squareAnimation.startTime = e.target.value;
+  });
 
+  // squareAnimation.pause();
 
-  squareAnimation.pause();
+  // console.log('playState after pause()', squareAnimation.playState)
+  // console.log('pending after pause()', squareAnimation.pending)
 
-  console.log('playState after pause()', squareAnimation.playState)
-  console.log('pending after pause()', squareAnimation.pending)
+  // squareAnimation.ready.then(() => {
+  //   console.log('playState during ready resolve', squareAnimation.playState)
+  //   console.log('pending during ready resolve', squareAnimation.pending)
+  // })
 
-  squareAnimation.ready.then(() => {
-    console.log('playState during ready resolve', squareAnimation.playState)
-    console.log('pending during ready resolve', squareAnimation.pending)
-  })
+  // squareAnimation.play()
 
-  squareAnimation.play()
-
-  console.log('playState after play()', squareAnimation.playState)
-  console.log('pending after play()', squareAnimation.pending)
+  // console.log('playState after play()', squareAnimation.playState)
+  // console.log('pending after play()', squareAnimation.pending)
 
   // await squareAnimation.finished;
   // element.remove()
@@ -174,13 +190,43 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   squareAnimation.addEventListener("finish", (e) => {
     // TODO Remove this test code
-    console.log('ELITEST', { e });
+    console.log("ELITEST Finish", { e });
     // ^ TODO Remove this test code
-  })
+  });
 
   squareAnimation.addEventListener("cancel", (e) => {
     // TODO Remove this test code
-    console.log('ELITEST', { e });
+    console.log("ELITEST Cancel", { e });
     // ^ TODO Remove this test code
+  });
+
+  // TODO Remove this test code
+  // console.log("ELITEST Get doc Animations", document.getAnimations());
+  // console.log(
+  //   "ELITEST Get element Animations",
+  //   element.getAnimations({ subtree: true })
+  // );
+  // console.log("ELITEST Get element2 Animations", element2.getAnimations());
+  // ^ TODO Remove this test code
+
+  const speedButtons = document.querySelectorAll('.speedButton')
+
+  speedButtons.forEach(button => {
+    // TODO Remove this test code
+    console.log('ELITEST speed button clicked', { classes: button.classList });
+    // ^ TODO Remove this test code
+    button.addEventListener('click', () => {
+      if (button.classList.contains("decrease")) {
+        document.getAnimations().forEach(animation => {
+          animation.updatePlaybackRate(animation.playbackRate * 0.9)
+        })
+      }
+
+      if (button.classList.contains("increase")) {
+        document.getAnimations().forEach(animation => {
+          animation.updatePlaybackRate(animation.playbackRate / .9)
+        })
+      }
+    })
   })
 });
